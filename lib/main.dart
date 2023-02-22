@@ -1,3 +1,4 @@
+import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Eggrow',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.grey, useMaterial3: true),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }
