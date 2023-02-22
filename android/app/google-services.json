@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "84838383095",
+    "firebase_url": "https://poultry-71a8a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "poultry-71a8a",
+    "storage_bucket": "poultry-71a8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84838383095:android:8583b1718786843b2442f2",
+        "android_client_info": {
+          "package_name": "com.example.eggrow_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84838383095-1r89pgov1ecvit569vcbi7g7r6nbraj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnm4yHK5M6HKxAUq0ZbsYlA_dceQ8Qg4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84838383095-1r89pgov1ecvit569vcbi7g7r6nbraj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
