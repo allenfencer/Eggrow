@@ -1,6 +1,9 @@
+import 'package:eggrow_app/global%20widgets/custom_button.dart';
 import 'package:eggrow_app/services/authentication_service.dart';
 import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../constants/text_theme.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -10,10 +13,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool isLoading = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  login(context) async {
+  void login() async {
+    setState(() {
+      isLoading = true;
+    });
     final user = await AuthenticationService.loginUser(
         context, emailController.text, passwordController.text);
     if (user != null) {
@@ -21,6 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => const HomeScreen()));
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -35,7 +45,18 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(hintText: 'email'),
+              decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  hintText: 'Email',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: TT.primaryPeach, width: 2),
+                    borderRadius: BorderRadius.circular(40),
+                  )),
             ),
             const SizedBox(
               height: 50,
@@ -43,20 +64,30 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: passwordController,
               keyboardType: TextInputType.visiblePassword,
-              decoration: const InputDecoration(hintText: 'password'),
+              decoration: InputDecoration(
+                  hintText: 'Password',
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: TT.primaryPeach, width: 2),
+                      borderRadius: BorderRadius.circular(40))),
             ),
             const SizedBox(
               height: 50,
             ),
-            TextButton(
-                onPressed: () {
-                  login(context);
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                ),
-                child:
-                    const Text('Login', style: TextStyle(color: Colors.white)))
+            // TextButton(
+            //     onPressed: () {
+            //       login(context);
+            //     },
+            //     style: TextButton.styleFrom(
+            //       fixedSize: const Size(100, 50),
+            //       backgroundColor: TT.primaryBlack,
+            //     ),
+            //     child: const Text('Login', style: TT.f18w600))
+            CustomButton(isLoading: isLoading, function: login)
           ],
         ),
       ),

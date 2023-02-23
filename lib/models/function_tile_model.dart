@@ -6,16 +6,22 @@ import 'package:flutter/material.dart';
 import '../constants/text_theme.dart';
 
 class FunctionTileModel {
+  bool isActive;
+  String imagePath1;
+  String imagePath2;
   Color textColor;
   String functionTileName;
-  String imagePath;
   Color tileBgColor;
   Widget routeScreen;
+  Function? onTap;
 
   FunctionTileModel({
+    this.isActive = false,
+    this.onTap,
     required this.textColor,
     required this.functionTileName,
-    required this.imagePath,
+    required this.imagePath1,
+    required this.imagePath2,
     required this.tileBgColor,
     required this.routeScreen,
   });
@@ -23,33 +29,33 @@ class FunctionTileModel {
   static List gridTileDataList = [
     FunctionTileModel(
       functionTileName: 'Light Control',
-      imagePath:
-          'https://i.pinimg.com/originals/c1/df/0d/c1df0de5912ef08a7ef501b592419c14.png',
+      imagePath1: 'assets/icons/lightOff.png',
+      imagePath2: 'assets/icons/lightOn.png',
       tileBgColor: TT.primaryBlack,
       textColor: Colors.white,
       routeScreen: const LightControl(),
     ),
     FunctionTileModel(
       functionTileName: 'Cage Control',
-      textColor: Colors.black,
-      imagePath:
-          'https://i.pinimg.com/originals/c1/df/0d/c1df0de5912ef08a7ef501b592419c14.png',
-      tileBgColor: TT.primaryyellow,
+      textColor: Colors.white,
+      imagePath1: 'assets/icons/lightOff.png',
+      imagePath2: 'assets/icons/lightOn.png',
+      tileBgColor: TT.primaryBlack,
       routeScreen: const CageControl(),
     ),
     FunctionTileModel(
       functionTileName: 'Cage Cleaning',
-      textColor: Colors.black,
-      imagePath:
-          'https://i.pinimg.com/originals/c1/df/0d/c1df0de5912ef08a7ef501b592419c14.png',
-      tileBgColor: TT.primaryyellow,
+      textColor: Colors.white,
+      imagePath1: 'assets/icons/cleaning.png',
+      imagePath2: 'assets/icons/cleaning.png',
+      tileBgColor: TT.primaryBlack,
       routeScreen: const LightControl(),
     ),
     FunctionTileModel(
       functionTileName: 'Fan Control',
       textColor: Colors.white,
-      imagePath:
-          'https://i.pinimg.com/originals/c1/df/0d/c1df0de5912ef08a7ef501b592419c14.png',
+      imagePath1: 'assets/icons/fanOff.png',
+      imagePath2: 'assets/icons/fanOn.png',
       tileBgColor: TT.primaryBlack,
       routeScreen: const LightControl(),
     ),

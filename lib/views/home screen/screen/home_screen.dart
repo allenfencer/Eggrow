@@ -2,6 +2,7 @@ import 'package:eggrow_app/models/function_tile_model.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 import '../../../constants/text_theme.dart';
 
@@ -58,11 +59,8 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   List gridItemList = FunctionTileModel.gridTileDataList;
                   return FunctionTile(
-                      textColor: gridItemList[index].textColor,
-                      bgColor: gridItemList[index].tileBgColor,
-                      imagePath: gridItemList[index].imagePath,
-                      route: gridItemList[index].routeScreen,
-                      tileName: gridItemList[index].functionTileName);
+                    model: gridItemList[index],
+                  );
                 }),
             const SizedBox(
               height: 20,

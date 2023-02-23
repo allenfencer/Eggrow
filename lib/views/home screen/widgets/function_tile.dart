@@ -1,35 +1,37 @@
+import 'package:eggrow_app/models/function_tile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 import '../../../constants/text_theme.dart';
 
-class FunctionTile extends StatelessWidget {
-  final Color textColor;
-  final String tileName;
-  final Color bgColor;
-  final Widget route;
-  final String imagePath;
-  const FunctionTile(
-      {super.key,
-      required this.textColor,
-      required this.bgColor,
-      required this.imagePath,
-      required this.route,
-      required this.tileName});
+class FunctionTile extends StatefulWidget {
+  final FunctionTileModel model;
+  const FunctionTile({super.key, required this.model});
 
+  @override
+  State<FunctionTile> createState() => _FunctionTileState();
+}
+
+class _FunctionTileState extends State<FunctionTile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        var type = FeedbackType.heavy;
-        Vibrate.feedback(type);
         showDialog(
             context: context,
             barrierDismissible: true,
             builder: ((context) {
               return Dialog.fullscreen(
-                  backgroundColor: Colors.transparent, child: route);
+                  backgroundColor: Colors.transparent,
+                  child: widget.model.routeScreen);
             }));
+      },
+      onLongPress: () {
+        var type = FeedbackType.success;
+        Vibrate.feedback(type);
+        setState(() {
+          widget.model.isActive = !widget.model.isActive;
+        });
       },
       child: Container(
         height: 180,
@@ -37,7 +39,7 @@ class FunctionTile extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(45),
-          color: bgColor,
+          color: widget.model.tileBgColor,
           boxShadow: [
             BoxShadow(
                 blurRadius: 10,
@@ -47,15 +49,21 @@ class FunctionTile extends StatelessWidget {
           ],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network(imagePath),
+            Image.asset(
+              widget.model.isActive
+                  ? widget.model.imagePath2
+                  : widget.model.imagePath1,
+              height: 70,
+              width: 70,
+            ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             Text(
-              tileName,
-              style: TT.f18w600.copyWith(color: textColor),
+              widget.model.functionTileName,
+              style: TT.f18w600.copyWith(color: widget.model.textColor),
             )
           ],
         ),
