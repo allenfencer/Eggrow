@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import '../constants/text_theme.dart';
 
 class CustomButton extends StatelessWidget {
+  final String buttonText;
   final bool isLoading;
   final VoidCallback function;
   const CustomButton(
-      {super.key, required this.isLoading, required this.function});
+      {super.key,
+      required this.isLoading,
+      required this.function,
+      required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: function,
         style: TextButton.styleFrom(
-          fixedSize: const Size(180, 50),
+          fixedSize: const Size(120, 40),
           backgroundColor: TT.primaryBlack,
         ),
         child: isLoading
@@ -27,6 +31,6 @@ class CustomButton extends StatelessWidget {
                   ),
                 ),
               )
-            : const Text('Login', style: TT.f18w600));
+            : Text(buttonText, style: TT.f18w600));
   }
 }

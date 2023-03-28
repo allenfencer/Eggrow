@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/text_theme.dart';
+import '../../global widgets/minimalist_tile.dart';
 
-class CageControl extends StatelessWidget {
+class CageControl extends StatefulWidget {
   const CageControl({super.key});
 
+  @override
+  State<CageControl> createState() => _CageControlState();
+}
+
+class _CageControlState extends State<CageControl> {
+  bool isOpen = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +19,8 @@ class CageControl extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 170),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 165),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,6 +39,63 @@ class CageControl extends StatelessWidget {
                 style: TT.f18w600.copyWith(color: TT.primaryBlack),
               )
             ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isOpen = true;
+                  });
+                },
+                child: MinimalistTile(
+                  icon: Icons.door_front_door,
+                  width: 125,
+                  isActiv: isOpen,
+                  height: 150,
+                  text: 'Door Open',
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isOpen = false;
+                  });
+                },
+                child: MinimalistTile(
+                  icon: Icons.door_front_door,
+                  isActiv: !isOpen,
+                  width: 125,
+                  height: 150,
+                  text: 'Door Closed',
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 150,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey.shade300,
+                      offset: const Offset(1, 1),
+                      spreadRadius: 2,
+                      blurStyle: BlurStyle.outer,
+                      blurRadius: 12)
+                ]),
+            child: Text('SCHEDULE'),
           )
         ],
       ),

@@ -11,7 +11,7 @@ class DetailWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 4,
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
               blurRadius: 5,

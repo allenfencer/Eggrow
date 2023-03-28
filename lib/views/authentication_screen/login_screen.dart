@@ -1,6 +1,7 @@
 import 'package:eggrow_app/global%20widgets/custom_button.dart';
 import 'package:eggrow_app/services/authentication_service.dart';
 import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/text_theme.dart';
@@ -17,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+
   void login() async {
     setState(() {
       isLoading = true;
@@ -25,8 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
         context, emailController.text, passwordController.text);
     if (user != null) {
       if (!mounted) return;
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          (route) => false);
     }
     setState(() {
       isLoading = false;
@@ -36,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Column(
@@ -78,16 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 50,
             ),
-            // TextButton(
-            //     onPressed: () {
-            //       login(context);
-            //     },
-            //     style: TextButton.styleFrom(
-            //       fixedSize: const Size(100, 50),
-            //       backgroundColor: TT.primaryBlack,
-            //     ),
-            //     child: const Text('Login', style: TT.f18w600))
-            CustomButton(isLoading: isLoading, function: login)
+            CustomButton(
+              isLoading: isLoading,
+              function: login,
+              buttonText: 'Login',
+            )
           ],
         ),
       ),

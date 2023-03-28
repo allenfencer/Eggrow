@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:eggrow_app/views/cage%20functions/cage_control.dart';
+import 'package:eggrow_app/views/cage%20functions/fan_control.dart';
 import 'package:eggrow_app/views/cage%20functions/light_control.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/text_theme.dart';
+import '../views/cage functions/exhaust_control.dart';
 
 class FunctionTileModel {
   bool isActive;
@@ -28,7 +30,7 @@ class FunctionTileModel {
 
   static List gridTileDataList = [
     FunctionTileModel(
-      functionTileName: 'Light Control',
+      functionTileName: 'Light',
       imagePath1: 'assets/icons/lightOff.png',
       imagePath2: 'assets/icons/lightOn.png',
       tileBgColor: TT.primaryBlack,
@@ -36,7 +38,7 @@ class FunctionTileModel {
       routeScreen: const LightControl(),
     ),
     FunctionTileModel(
-      functionTileName: 'Cage Control',
+      functionTileName: 'Door',
       textColor: Colors.white,
       imagePath1: 'assets/icons/lightOff.png',
       imagePath2: 'assets/icons/lightOn.png',
@@ -44,20 +46,20 @@ class FunctionTileModel {
       routeScreen: const CageControl(),
     ),
     FunctionTileModel(
-      functionTileName: 'Cage Cleaning',
-      textColor: Colors.white,
-      imagePath1: 'assets/icons/cleaning.png',
-      imagePath2: 'assets/icons/cleaning.png',
-      tileBgColor: TT.primaryBlack,
-      routeScreen: const LightControl(),
-    ),
-    FunctionTileModel(
-      functionTileName: 'Fan Control',
+      functionTileName: 'Fan',
       textColor: Colors.white,
       imagePath1: 'assets/icons/fanOff.png',
       imagePath2: 'assets/icons/fanOn.png',
       tileBgColor: TT.primaryBlack,
-      routeScreen: const LightControl(),
+      routeScreen: const FanControl(),
+    ),
+    FunctionTileModel(
+      functionTileName: 'Exhaust',
+      textColor: Colors.white,
+      imagePath1: 'assets/icons/fanOff.png',
+      imagePath2: 'assets/icons/fanOn.png',
+      tileBgColor: TT.primaryBlack,
+      routeScreen: const ExhaustControl(),
     ),
   ];
 }

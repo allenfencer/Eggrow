@@ -1,4 +1,7 @@
+import 'package:eggrow_app/global%20widgets/custom_button.dart';
 import 'package:eggrow_app/models/function_tile_model.dart';
+import 'package:eggrow_app/services/authentication_service.dart';
+import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +9,31 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 import '../../../constants/text_theme.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading = false;
+
+  Future logoutUser() async {
+    setState(() {
+      isLoading = true;
+    });
+    await AuthenticationService.logout(context);
+    if (!mounted) return;
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        (route) => false);
+
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +57,10 @@ class HomeScreen extends StatelessWidget {
                   width: 50,
                 ),
                 const Spacer(),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Colors.black87),
-                  child: const Text(
-                    'Live',
-                    style: TT.f18w600,
-                  ),
+                CustomButton(
+                  isLoading: isLoading,
+                  function: logoutUser,
+                  buttonText: 'Logout',
                 )
               ],
             ),

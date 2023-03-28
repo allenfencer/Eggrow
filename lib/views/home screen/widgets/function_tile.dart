@@ -1,4 +1,5 @@
 import 'package:eggrow_app/models/function_tile_model.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 
@@ -15,6 +16,8 @@ class FunctionTile extends StatefulWidget {
 class _FunctionTileState extends State<FunctionTile> {
   @override
   Widget build(BuildContext context) {
+    final db = FirebaseDatabase.instance.ref('cage-functions');
+
     return GestureDetector(
       onTap: () {
         showDialog(
@@ -29,6 +32,11 @@ class _FunctionTileState extends State<FunctionTile> {
       onLongPress: () {
         var type = FeedbackType.success;
         Vibrate.feedback(type);
+        db
+            .child(widget.model.functionTileName)
+            .set({'switch': !widget.model.isActive}).onError(
+                (error, stackTrace) => ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text(error.toString()))));
         setState(() {
           widget.model.isActive = !widget.model.isActive;
         });
@@ -38,7 +46,7 @@ class _FunctionTileState extends State<FunctionTile> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(45),
+          borderRadius: BorderRadius.circular(20),
           color: widget.model.tileBgColor,
           boxShadow: [
             BoxShadow(
