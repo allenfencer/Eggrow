@@ -30,7 +30,7 @@ class MinimalistTile extends StatelessWidget {
       width: width,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          color: isActiv ? TT.lightPurle : Colors.white,
+          color: isActiv ? TT.lightPurple : Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(

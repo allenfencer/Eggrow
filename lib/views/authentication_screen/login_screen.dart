@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
   void login() async {
     setState(() {
       isLoading = true;
@@ -45,8 +44,15 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              'Sign in',
+              style: TT.f35w700,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
             TextField(
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
@@ -59,12 +65,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide:
-                        const BorderSide(color: TT.primaryPeach, width: 2),
+                        const BorderSide(color: TT.lightPurple, width: 2),
                     borderRadius: BorderRadius.circular(40),
                   )),
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             TextField(
               controller: passwordController,
@@ -77,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       borderRadius: BorderRadius.circular(40)),
                   focusedBorder: OutlineInputBorder(
                       borderSide:
-                          const BorderSide(color: TT.primaryPeach, width: 2),
+                          const BorderSide(color: TT.lightPurple, width: 2),
                       borderRadius: BorderRadius.circular(40))),
             ),
             const SizedBox(
@@ -86,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CustomButton(
               isLoading: isLoading,
               function: login,
-              buttonText: 'Login',
+              buttonText: 'Sign in',
             )
           ],
         ),

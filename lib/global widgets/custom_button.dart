@@ -4,10 +4,12 @@ import '../constants/text_theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText;
+  final Color? buttonColor;
   final bool isLoading;
   final VoidCallback function;
   const CustomButton(
       {super.key,
+      this.buttonColor,
       required this.isLoading,
       required this.function,
       required this.buttonText});
@@ -17,8 +19,8 @@ class CustomButton extends StatelessWidget {
     return TextButton(
         onPressed: function,
         style: TextButton.styleFrom(
-          fixedSize: const Size(120, 40),
-          backgroundColor: TT.primaryBlack,
+          fixedSize: const Size(double.maxFinite, 50),
+          backgroundColor: buttonColor?? TT.primaryBlack,
         ),
         child: isLoading
             ? const Center(
@@ -26,7 +28,7 @@ class CustomButton extends StatelessWidget {
                   height: 20,
                   width: 20,
                   child: CircularProgressIndicator(
-                    color: TT.primaryPeach,
+                    color: TT.lightPurple,
                     strokeWidth: 3,
                   ),
                 ),

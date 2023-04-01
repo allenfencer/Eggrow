@@ -81,7 +81,7 @@ class _ExhaustControlState extends State<ExhaustControl> {
             alignment: Alignment.center,
             margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-                color: TT.lightPurle,
+                color: TT.lightPurple,
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(

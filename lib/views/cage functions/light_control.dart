@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import '../../constants/text_theme.dart';
 
 class LightControl extends StatefulWidget {
-  const LightControl({super.key});
+  // final bool lightSwitch;
+  const LightControl({
+    super.key,
+    // required this.lightSwitch
+  });
 
   @override
   State<LightControl> createState() => _LightControlState();

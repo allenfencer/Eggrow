@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../constants/text_theme.dart';
 
 class DetailWidget extends StatelessWidget {
-  const DetailWidget({Key? key}) : super(key: key);
+  final String? temperature;
+  final String? humitdity;
+  final String? gas;
+
+  const DetailWidget({Key? key, this.humitdity, this.temperature, this.gas})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +43,8 @@ class DetailWidget extends StatelessWidget {
                     style: TT.f18wnormal,
                   )),
               const Spacer(),
-              const Text(
-                "29°C",
+              Text(
+                temperature!,
                 style: TT.f18wnormal,
               )
             ],
@@ -58,8 +63,8 @@ class DetailWidget extends StatelessWidget {
                     style: TT.f18wnormal,
                   )),
               const Spacer(),
-              const Text(
-                "65%",
+              Text(
+                '${humitdity!}%',
                 style: TT.f18wnormal,
               )
             ],
@@ -78,8 +83,8 @@ class DetailWidget extends StatelessWidget {
                     style: TT.f18wnormal,
                   )),
               const Spacer(),
-              const Text(
-                "15%",
+              Text(
+                "${gas!}%",
                 style: TT.f18wnormal,
               )
             ],

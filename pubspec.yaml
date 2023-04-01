@@ -35,6 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_vibrate: ^1.3.0
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

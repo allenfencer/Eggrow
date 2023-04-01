@@ -112,7 +112,7 @@ class _FanControlState extends State<FanControl> {
                 padding: const EdgeInsets.all(10),
                 margin: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                    color: TT.lightPurle,
+                    color: TT.lightPurple,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
