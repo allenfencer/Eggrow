@@ -5,9 +5,11 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 import '../../../constants/text_theme.dart';
 
 class FunctionTile extends StatefulWidget {
+  bool? isActive;
   final FunctionTileModel model;
-  const FunctionTile({
+  FunctionTile({
     super.key,
+    required this.isActive,
     required this.model,
   });
 
@@ -20,28 +22,29 @@ class _FunctionTileState extends State<FunctionTile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // onTap: () {
-      //   showDialog(
-      //       context: context,
-      //       barrierDismissible: true,
-      //       builder: ((context) {
-      //         return Dialog.fullscreen(
-      //             backgroundColor: Colors.transparent,
-      //             child: widget.model.routeScreen);
-      //       }));
-      // },
       onTap: () {
-        var type = FeedbackType.success;
-        Vibrate.feedback(type);
-        db
-            .child(widget.model.functionTileName)
-            .set({'switch': !widget.model.isActive}).onError(
-                (error, stackTrace) => ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text(error.toString()))));
-        setState(() {
-          widget.model.isActive = !widget.model.isActive;
-        });
+        showDialog(
+            context: context,
+            barrierDismissible: true,
+            useSafeArea: true,
+            builder: ((context) {
+              return Dialog.fullscreen(
+                  backgroundColor: Colors.transparent,
+                  child: widget.model.routeScreen);
+            }));
       },
+      // onLongPress: () {
+      //   var type = FeedbackType.success;
+      //   Vibrate.feedback(type);
+      //   db
+      //       .child(widget.model.functionTileName)
+      //       .set({'switch': !(widget.isActive!)}).onError((error, stackTrace) =>
+      //           ScaffoldMessenger.of(context)
+      //               .showSnackBar(SnackBar(content: Text(error.toString()))));
+      //   setState(() {
+      //     widget.isActive = !(widget.isActive!);
+      //   });
+      // },
       child: Container(
         height: 180,
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -49,19 +52,19 @@ class _FunctionTileState extends State<FunctionTile> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: widget.model.tileBgColor,
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 10,
-                spreadRadius: 2,
-                offset: const Offset(5, 5),
-                color: Colors.grey.shade400.withOpacity(0.7))
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //       blurRadius: 10,
+          //       spreadRadius: 2,
+          //       offset: const Offset(5, 5),
+          //       color: Colors.grey.shade400.withOpacity(0.7))
+          // ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              widget.model.isActive
+              widget.isActive!
                   ? widget.model.imagePath2
                   : widget.model.imagePath1,
               height: 70,

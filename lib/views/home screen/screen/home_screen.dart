@@ -8,6 +8,7 @@ import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/dashboard_shimmer.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
+import 'package:eggrow_app/views/home%20screen/widgets/gridview_shimmer.dart';
 import 'package:eggrow_app/views/profile/profile_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
   late DatabaseReference dashboardRef;
+  late DatabaseReference cageRef;
   List<Widget> cageFunctions = [
     const LightControl(),
     const CageControl(),
@@ -41,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     dashboardRef = FirebaseDatabase.instance.ref('Dashboard');
+    cageRef = FirebaseDatabase.instance.ref('cage-functions');
     super.initState();
   }
 
@@ -49,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: Colors.white,
         title: const Text(
           'Dashboard',
           style: TT.f24w700,
@@ -76,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      backgroundColor: Colors.grey.shade100,
+      backgroundColor: Colors.white,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         width: MediaQuery.of(context).size.width,
@@ -112,20 +115,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 }),
             const SizedBox(height: 35),
-            GridView.builder(
-                shrinkWrap: true,
-                itemCount: FunctionTileModel.gridTileDataList.length,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 4 / 5),
-                itemBuilder: (context, index) {
-                  List gridItemList = FunctionTileModel.gridTileDataList;
-                  return FunctionTile(
-                    model: gridItemList[index],
-                  );
+            StreamBuilder(
+                stream: cageRef.onValue,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const GridViewShimmer();
+                  } else if (snapshot.hasData) {
+                    var data = snapshot.data!.snapshot.children;
+                    return GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: data.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 20,
+                                childAspectRatio: 4 / 5),
+                        itemBuilder: (context, index) {
+                          List gridItemList =
+                              FunctionTileModel.gridTileDataList;
+                          return FunctionTile(
+                            isActive: snapshot.data!.snapshot
+                                .child(gridItemList[index].functionTileName)
+                                .child('switch')
+                                .value as bool,
+                            model: gridItemList[index],
+                          );
+                        });
+                  } else {
+                    return const GridViewShimmer();
+                  }
                 }),
             const SizedBox(
               height: 20,

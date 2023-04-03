@@ -34,11 +34,13 @@ dependencies:
   firebase_database: ^10.0.14
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.2.19
   flutter_vibrate: ^1.3.0
   provider: ^6.0.5
   shimmer: ^2.0.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -79,3 +81,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  
+#launcher icons
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app_logo/logo.png"
+#splash screen 
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/app_logo/logo.png

@@ -1,3 +1,5 @@
+import 'package:eggrow_app/providers/door_function_provider.dart';
+import 'package:eggrow_app/providers/fan_function_provider.dart';
 import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 
@@ -9,7 +11,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => LightFunctionProvider())
+    ChangeNotifierProvider(create: (_) => LightFunctionProvider()),
+    ChangeNotifierProvider(create: (_) => DoorFunctionProvider()),
+    ChangeNotifierProvider(create: (_) => FanFunctionProvider())
   ], child: const MyApp()));
 }
 
@@ -21,7 +25,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Eggrow',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.grey, useMaterial3: true),
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+        useMaterial3: true,
+      ),
       home: const LoginScreen(),
     );
   }

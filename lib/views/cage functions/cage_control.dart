@@ -1,17 +1,13 @@
+import 'package:eggrow_app/providers/door_function_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
 import '../../global widgets/minimalist_tile.dart';
 
-class CageControl extends StatefulWidget {
+class CageControl extends StatelessWidget {
   const CageControl({super.key});
 
-  @override
-  State<CageControl> createState() => _CageControlState();
-}
-
-class _CageControlState extends State<CageControl> {
-  bool isOpen = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,27 +44,23 @@ class _CageControlState extends State<CageControl> {
             children: [
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    isOpen = true;
-                  });
+                  context.read<DoorFunctionProvider>().openDoor(context);
                 },
                 child: MinimalistTile(
                   icon: Icons.door_front_door,
                   width: 125,
-                  isActiv: isOpen,
+                  isActiv: context.watch<DoorFunctionProvider>().doorOpen,
                   height: 150,
                   text: 'Door Open',
                 ),
               ),
               GestureDetector(
                 onTap: () {
-                  setState(() {
-                    isOpen = false;
-                  });
+                  context.read<DoorFunctionProvider>().closeDoor(context);
                 },
                 child: MinimalistTile(
                   icon: Icons.door_front_door,
-                  isActiv: !isOpen,
+                  isActiv: !(context.watch<DoorFunctionProvider>().doorOpen),
                   width: 125,
                   height: 150,
                   text: 'Door Closed',

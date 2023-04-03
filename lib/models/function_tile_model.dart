@@ -9,7 +9,7 @@ import '../constants/text_theme.dart';
 import '../views/cage functions/exhaust_control.dart';
 
 class FunctionTileModel {
-  bool isActive;
+  // bool isActive;
   String imagePath1;
   String imagePath2;
   Color textColor;
@@ -18,7 +18,7 @@ class FunctionTileModel {
   Widget routeScreen;
 
   FunctionTileModel({
-    required this.isActive,
+    // required this.isActive,
     required this.textColor,
     required this.functionTileName,
     required this.imagePath1,
@@ -29,7 +29,7 @@ class FunctionTileModel {
 
   static List gridTileDataList = [
     FunctionTileModel(
-      isActive: false,
+      // isActive: false,
       functionTileName: 'Light',
       imagePath1: 'assets/icons/lightOff.png',
       imagePath2: 'assets/icons/lightOn.png',
@@ -38,16 +38,15 @@ class FunctionTileModel {
       routeScreen: const LightControl(),
     ),
     FunctionTileModel(
-      isActive: false,
+      // isActive: false,
       functionTileName: 'Door',
       textColor: Colors.white,
-      imagePath1: 'assets/icons/lightOff.png',
-      imagePath2: 'assets/icons/lightOn.png',
+      imagePath1: 'assets/icons/doorLocked.png',
+      imagePath2: 'assets/icons/doorUnlocked.png',
       tileBgColor: TT.primaryBlack,
       routeScreen: const CageControl(),
     ),
     FunctionTileModel(
-      isActive: false,
       functionTileName: 'Fan',
       textColor: Colors.white,
       imagePath1: 'assets/icons/fanOff.png',
@@ -56,11 +55,20 @@ class FunctionTileModel {
       routeScreen: const FanControl(),
     ),
     FunctionTileModel(
-      isActive: false,
+      // isActive: false,
       functionTileName: 'Exhaust',
       textColor: Colors.white,
       imagePath1: 'assets/icons/fanOff.png',
       imagePath2: 'assets/icons/fanOn.png',
+      tileBgColor: TT.primaryBlack,
+      routeScreen: const ExhaustControl(),
+    ),
+    FunctionTileModel(
+      // isActive: false,
+      functionTileName: 'Cleaning',
+      textColor: Colors.white,
+      imagePath1: 'assets/icons/cleaning.png',
+      imagePath2: 'assets/icons/cleaning.png',
       tileBgColor: TT.primaryBlack,
       routeScreen: const ExhaustControl(),
     ),

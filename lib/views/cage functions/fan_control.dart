@@ -1,4 +1,6 @@
+import 'package:eggrow_app/providers/fan_function_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
 import '../../global widgets/minimalist_tile.dart';
@@ -35,7 +37,7 @@ class _FanControlState extends State<FanControl> {
                   },
                   icon: const Icon(Icons.arrow_back_ios)),
               Text(
-                'Gas Detector',
+                'Fan Control',
                 style: TT.f18w600.copyWith(color: TT.primaryBlack),
               )
             ],
@@ -57,7 +59,10 @@ class _FanControlState extends State<FanControl> {
                         spreadRadius: 1,
                         blurRadius: 5)
                   ]),
-              child: Text('40'),
+              child: const Text(
+                '40',
+                style: TT.f24w700,
+              ),
             ),
           ),
           //SCHEDULE
@@ -134,13 +139,12 @@ class _FanControlState extends State<FanControl> {
                       ],
                     ),
                     Switch(
-                      onChanged: (val) {
-                        setState(() {
-                          fanOn = val;
-                        });
-                      },
-                      value: fanOn,
-                    )
+                        onChanged: (val) {
+                          context
+                              .read<FanFunctionProvider>()
+                              .toggleFanSwitch(context);
+                        },
+                        value: context.watch<FanFunctionProvider>().fanOn)
                   ],
                 ),
               ),

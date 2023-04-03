@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TT {
-  static const lightPurple = Color(0xff973cff);
+  static const lightPurple = Color(0xff973CFF);
   static const primaryBlack = Color(0xff1D1D1D);
   static const primaryPeach = Color(0xffFFB286);
   static const primaryyellow = Color(0xffFFD75E);
