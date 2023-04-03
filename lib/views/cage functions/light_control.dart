@@ -1,21 +1,17 @@
+import 'package:eggrow_app/providers/light_function_providers.dart';
+import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
+import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
+import '../../models/function_tile_model.dart';
 
-class LightControl extends StatefulWidget {
-  // final bool lightSwitch;
+class LightControl extends StatelessWidget {
   const LightControl({
     super.key,
-    // required this.lightSwitch
   });
 
-  @override
-  State<LightControl> createState() => _LightControlState();
-}
-
-class _LightControlState extends State<LightControl> {
-  bool lightSwitch = false;
-  double sliderVal = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,11 +66,11 @@ class _LightControlState extends State<LightControl> {
                 Switch(
                     inactiveTrackColor: Colors.white,
                     inactiveThumbColor: Colors.deepPurple,
-                    value: lightSwitch,
+                    value: context.watch<LightFunctionProvider>().lightSwitch,
                     onChanged: (val) {
-                      setState(() {
-                        lightSwitch = val;
-                      });
+                      context
+                          .read<LightFunctionProvider>()
+                          .toggleLights(context);
                     }),
               ],
             ),
@@ -92,7 +88,7 @@ class _LightControlState extends State<LightControl> {
                   style: TT.f18wnormal,
                 ),
                 Text(
-                  '${(sliderVal * 100).toInt()}%',
+                  '${(context.read<LightFunctionProvider>().lightIntensity * 100).toInt()}%',
                   style: TT.f24w700,
                 ),
               ],
@@ -102,11 +98,9 @@ class _LightControlState extends State<LightControl> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Slider(
               onChanged: (val) {
-                setState(() {
-                  sliderVal = val;
-                });
+                context.read<LightFunctionProvider>().changeLightIntensity(val);
               },
-              value: sliderVal,
+              value: context.watch<LightFunctionProvider>().lightIntensity,
               divisions: 10,
             ),
           ),

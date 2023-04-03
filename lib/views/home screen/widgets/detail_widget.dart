@@ -19,10 +19,10 @@ class DetailWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-              blurRadius: 5,
+              blurRadius: 2,
               spreadRadius: 1,
               offset: const Offset(2, 2),
-              color: Colors.grey.shade400.withOpacity(0.7))
+              color: Colors.grey.shade400.withOpacity(0.6))
         ],
         color: Colors.grey.shade300,
       ),
@@ -40,12 +40,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Temperature',
-                    style: TT.f18wnormal,
+                    style: TT.f18w700,
                   )),
               const Spacer(),
               Text(
-                temperature!,
-                style: TT.f18wnormal,
+                '${temperature!}°C',
+                style: TT.f18w700,
               )
             ],
           ),
@@ -60,12 +60,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Humidity',
-                    style: TT.f18wnormal,
+                    style: TT.f18w700,
                   )),
               const Spacer(),
               Text(
                 '${humitdity!}%',
-                style: TT.f18wnormal,
+                style: TT.f18w700,
               )
             ],
           ),
@@ -80,12 +80,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Toxic Gas',
-                    style: TT.f18wnormal,
+                    style: TT.f18w700,
                   )),
               const Spacer(),
               Text(
                 "${gas!}%",
-                style: TT.f18wnormal,
+                style: TT.f18w700,
               )
             ],
           ),

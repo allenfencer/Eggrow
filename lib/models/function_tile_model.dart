@@ -1,7 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/views/cage%20functions/cage_control.dart';
 import 'package:eggrow_app/views/cage%20functions/fan_control.dart';
 import 'package:eggrow_app/views/cage%20functions/light_control.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/text_theme.dart';
@@ -15,11 +16,9 @@ class FunctionTileModel {
   String functionTileName;
   Color tileBgColor;
   Widget routeScreen;
-  Function? onTap;
 
   FunctionTileModel({
-    this.isActive = false,
-    this.onTap,
+    required this.isActive,
     required this.textColor,
     required this.functionTileName,
     required this.imagePath1,
@@ -30,6 +29,7 @@ class FunctionTileModel {
 
   static List gridTileDataList = [
     FunctionTileModel(
+      isActive: false,
       functionTileName: 'Light',
       imagePath1: 'assets/icons/lightOff.png',
       imagePath2: 'assets/icons/lightOn.png',
@@ -38,6 +38,7 @@ class FunctionTileModel {
       routeScreen: const LightControl(),
     ),
     FunctionTileModel(
+      isActive: false,
       functionTileName: 'Door',
       textColor: Colors.white,
       imagePath1: 'assets/icons/lightOff.png',
@@ -46,6 +47,7 @@ class FunctionTileModel {
       routeScreen: const CageControl(),
     ),
     FunctionTileModel(
+      isActive: false,
       functionTileName: 'Fan',
       textColor: Colors.white,
       imagePath1: 'assets/icons/fanOff.png',
@@ -54,6 +56,7 @@ class FunctionTileModel {
       routeScreen: const FanControl(),
     ),
     FunctionTileModel(
+      isActive: false,
       functionTileName: 'Exhaust',
       textColor: Colors.white,
       imagePath1: 'assets/icons/fanOff.png',

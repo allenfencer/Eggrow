@@ -1,12 +1,16 @@
+import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
-import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => LightFunctionProvider())
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

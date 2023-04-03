@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:eggrow_app/global%20widgets/custom_button.dart';
 import 'package:eggrow_app/models/function_tile_model.dart';
+import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/services/authentication_service.dart';
 import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/dashboard_shimmer.dart';
@@ -11,9 +12,14 @@ import 'package:eggrow_app/views/profile/profile_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../constants/text_theme.dart';
+import '../../cage functions/cage_control.dart';
+import '../../cage functions/exhaust_control.dart';
+import '../../cage functions/fan_control.dart';
+import '../../cage functions/light_control.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,6 +31,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
   late DatabaseReference dashboardRef;
+  List<Widget> cageFunctions = [
+    const LightControl(),
+    const CageControl(),
+    const FanControl(),
+    const ExhaustControl(),
+  ];
 
   @override
   void initState() {

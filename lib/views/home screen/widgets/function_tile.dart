@@ -2,34 +2,35 @@ import 'package:eggrow_app/models/function_tile_model.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
-
 import '../../../constants/text_theme.dart';
 
 class FunctionTile extends StatefulWidget {
   final FunctionTileModel model;
-  const FunctionTile({super.key, required this.model});
+  const FunctionTile({
+    super.key,
+    required this.model,
+  });
 
   @override
   State<FunctionTile> createState() => _FunctionTileState();
 }
 
 class _FunctionTileState extends State<FunctionTile> {
+  final db = FirebaseDatabase.instance.ref('cage-functions');
   @override
   Widget build(BuildContext context) {
-    final db = FirebaseDatabase.instance.ref('cage-functions');
-
     return GestureDetector(
+      // onTap: () {
+      //   showDialog(
+      //       context: context,
+      //       barrierDismissible: true,
+      //       builder: ((context) {
+      //         return Dialog.fullscreen(
+      //             backgroundColor: Colors.transparent,
+      //             child: widget.model.routeScreen);
+      //       }));
+      // },
       onTap: () {
-        showDialog(
-            context: context,
-            barrierDismissible: true,
-            builder: ((context) {
-              return Dialog.fullscreen(
-                  backgroundColor: Colors.transparent,
-                  child: widget.model.routeScreen);
-            }));
-      },
-      onLongPress: () {
         var type = FeedbackType.success;
         Vibrate.feedback(type);
         db
