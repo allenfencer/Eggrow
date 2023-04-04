@@ -26,9 +26,11 @@ class MyApp extends StatelessWidget {
       title: 'Eggrow',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        useMaterial3: true,
-      ),
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+          )),
       home: const LoginScreen(),
     );
   }

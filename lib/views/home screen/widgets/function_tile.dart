@@ -29,7 +29,7 @@ class _FunctionTileState extends State<FunctionTile> {
             useSafeArea: true,
             builder: ((context) {
               return Dialog.fullscreen(
-                  backgroundColor: Colors.transparent,
+                  backgroundColor: Colors.black54,
                   child: widget.model.routeScreen);
             }));
       },
@@ -67,8 +67,8 @@ class _FunctionTileState extends State<FunctionTile> {
               widget.isActive!
                   ? widget.model.imagePath2
                   : widget.model.imagePath1,
-              height: 70,
-              width: 70,
+              height: 55,
+              width: 55,
             ),
             const SizedBox(
               height: 15,
