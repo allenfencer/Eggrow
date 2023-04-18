@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         title: const Text(
           'Dashboard',
-          style: TT.f24w700,
+          style: TT.f24w500,
         ),
         actions: [
           CircleAvatar(

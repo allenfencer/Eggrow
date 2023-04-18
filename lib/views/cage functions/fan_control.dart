@@ -38,7 +38,7 @@ class _FanControlState extends State<FanControl> {
                   icon: const Icon(Icons.arrow_back_ios)),
               Text(
                 'Fan Control',
-                style: TT.f18w600.copyWith(color: TT.primaryBlack),
+                style: TT.f18w500.copyWith(color: TT.primaryBlack),
               )
             ],
           ),
@@ -47,6 +47,7 @@ class _FanControlState extends State<FanControl> {
           ),
           Center(
             child: Container(
+              padding: const EdgeInsets.all(20),
               height: 180,
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -59,9 +60,21 @@ class _FanControlState extends State<FanControl> {
                         spreadRadius: 1,
                         blurRadius: 5)
                   ]),
-              child: const Text(
-                '40',
-                style: TT.f24w700,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    '40°C',
+                    style: TT.f35w500,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Current Temperature',
+                    style: TT.f16w700,
+                  )
+                ],
               ),
             ),
           ),
@@ -107,7 +120,7 @@ class _FanControlState extends State<FanControl> {
                         Icons.motion_photos_on_sharp,
                         size: 35,
                         color: Colors.black),
-                    Text('35%', style: TT.f24w700)
+                    Text('35%', style: TT.f24w500)
                   ],
                 ),
               ),
@@ -132,10 +145,11 @@ class _FanControlState extends State<FanControl> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Icon(Icons.power_settings_new,
+                      children: [
+                        const Icon(Icons.power_settings_new,
                             size: 25, color: Colors.white),
-                        Text('Power', style: TT.f18w600)
+                        Text('Power',
+                            style: TT.f18w500.copyWith(color: Colors.white))
                       ],
                     ),
                     Switch(

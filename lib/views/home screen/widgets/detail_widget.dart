@@ -40,12 +40,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Temperature',
-                    style: TT.f18w700,
+                    style: TT.f18w500,
                   )),
               const Spacer(),
               Text(
                 '${temperature!}°C',
-                style: TT.f18w700,
+                style: TT.f18w500,
               )
             ],
           ),
@@ -60,12 +60,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Humidity',
-                    style: TT.f18w700,
+                    style: TT.f18w500,
                   )),
               const Spacer(),
               Text(
                 '${humitdity!}%',
-                style: TT.f18w700,
+                style: TT.f18w500,
               )
             ],
           ),
@@ -80,12 +80,12 @@ class DetailWidget extends StatelessWidget {
                   ),
                   label: const Text(
                     'Toxic Gas',
-                    style: TT.f18w700,
+                    style: TT.f18w500,
                   )),
               const Spacer(),
               Text(
                 "${gas!}%",
-                style: TT.f18w700,
+                style: TT.f18w500,
               )
             ],
           ),

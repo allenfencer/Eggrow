@@ -47,7 +47,7 @@ class LightControl extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
                   'Light Control',
-                  style: TT.f18w600.copyWith(color: TT.primaryBlack),
+                  style: TT.f18w500.copyWith(color: TT.primaryBlack),
                 ),
               ),
             ],
@@ -89,7 +89,7 @@ class LightControl extends StatelessWidget {
                 ),
                 Text(
                   '${(context.read<LightFunctionProvider>().lightIntensity * 100).toInt()}%',
-                  style: TT.f24w700,
+                  style: TT.f24w500,
                 ),
               ],
             ),

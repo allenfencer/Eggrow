@@ -32,7 +32,7 @@ class CageControl extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_ios)),
               Text(
                 'Cage Control',
-                style: TT.f18w600.copyWith(color: TT.primaryBlack),
+                style: TT.f18w500.copyWith(color: TT.primaryBlack),
               )
             ],
           ),

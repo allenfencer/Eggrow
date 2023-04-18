@@ -1,3 +1,4 @@
+import 'package:eggrow_app/providers/clean_function_provider.dart';
 import 'package:eggrow_app/providers/exhaust_function_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -5,14 +6,14 @@ import 'package:provider/provider.dart';
 import '../../constants/text_theme.dart';
 import '../../global widgets/minimalist_tile.dart';
 
-class ExhaustControl extends StatefulWidget {
-  const ExhaustControl({super.key});
+class CageClean extends StatefulWidget {
+  const CageClean({super.key});
 
   @override
-  State<ExhaustControl> createState() => _ExhaustControlState();
+  State<CageClean> createState() => _CageCleanState();
 }
 
-class _ExhaustControlState extends State<ExhaustControl> {
+class _CageCleanState extends State<CageClean> {
   bool fanOn = false;
   @override
   Widget build(BuildContext context) {
@@ -37,8 +38,8 @@ class _ExhaustControlState extends State<ExhaustControl> {
                   },
                   icon: const Icon(Icons.arrow_back_ios)),
               Text(
-                'Gas Detector',
-                style: TT.f18w500.copyWith(color: TT.primaryBlack),
+                'Cage Clean',
+                style: TT.f18w600.copyWith(color: TT.primaryBlack),
               )
             ],
           ),
@@ -47,7 +48,6 @@ class _ExhaustControlState extends State<ExhaustControl> {
           ),
           Center(
             child: Container(
-              padding: const EdgeInsets.all(20),
               height: 180,
               alignment: Alignment.center,
               decoration: BoxDecoration(
@@ -60,22 +60,9 @@ class _ExhaustControlState extends State<ExhaustControl> {
                         spreadRadius: 1,
                         blurRadius: 5)
                   ]),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    '40 ppm',
-                    style: TT.f35w500,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Ammonia Gas level',
-                    style: TT.f16w700,
-                    maxLines: 2,
-                  ),
-                ],
+              child: const Text(
+                '40',
+                style: TT.f35w500,
               ),
             ),
           ),
@@ -113,17 +100,15 @@ class _ExhaustControlState extends State<ExhaustControl> {
             child: ListTile(
               leading: Image.asset('assets/icons/fanIcon.png'),
               title: Text(
-                'Exhaust Fan',
-                style: TT.f18w500.copyWith(color: Colors.white),
+                'Clean',
+                style: TT.f18w700.copyWith(color: Colors.white),
               ),
               trailing: Switch(
                 activeColor: Colors.white,
                 onChanged: (val) {
-                  context
-                      .read<ExhaustFunctionProvider>()
-                      .toggleExhaustSwitch(context);
+                  context.read<CleanFunctionProvider>().startCleaning(context);
                 },
-                value: context.watch<ExhaustFunctionProvider>().exhaustOn,
+                value: context.watch<CleanFunctionProvider>().clean,
               ),
             ),
           )

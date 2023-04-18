@@ -25,7 +25,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
         (route) => false);
-
     setState(() {
       isLoading = false;
     });
@@ -39,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: AppBar(
           title: const Text(
             'Profile',
-            style: TT.f24w700,
+            style: TT.f24w500,
           ),
         ),
         body: Container(

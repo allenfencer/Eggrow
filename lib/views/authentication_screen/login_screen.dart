@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             const Text(
               'Sign in',
-              style: TT.f35w700,
+              style: TT.f35w500,
             ),
             const SizedBox(
               height: 40,
@@ -57,6 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: emailController,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xffE6E6E6),
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   hintText: 'Email',
@@ -76,6 +78,8 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: passwordController,
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xffE6E6E6),
                   hintText: 'Password',
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
