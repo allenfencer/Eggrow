@@ -1,11 +1,10 @@
-import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/views/cage%20functions/cage_control.dart';
 import 'package:eggrow_app/views/cage%20functions/fan_control.dart';
 import 'package:eggrow_app/views/cage%20functions/light_control.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/text_theme.dart';
+import '../views/cage functions/cage_clean.dart';
 import '../views/cage functions/exhaust_control.dart';
 
 class FunctionTileModel {
@@ -54,15 +53,15 @@ class FunctionTileModel {
       tileBgColor: TT.primaryBlack,
       routeScreen: const FanControl(),
     ),
-    FunctionTileModel(
-      // isActive: false,
-      functionTileName: 'Exhaust',
-      textColor: Colors.white,
-      imagePath1: 'assets/icons/fanOff.png',
-      imagePath2: 'assets/icons/fanOn.png',
-      tileBgColor: TT.primaryBlack,
-      routeScreen: const ExhaustControl(),
-    ),
+    // FunctionTileModel(
+    //   // isActive: false,
+    //   functionTileName: 'Feed',
+    //   textColor: Colors.white,
+    //   imagePath1: 'assets/icons/fanOff.png',
+    //   imagePath2: 'assets/icons/fanOn.png',
+    //   tileBgColor: TT.primaryBlack,
+    //   routeScreen: const FeedControl(),
+    // ),
     FunctionTileModel(
       // isActive: false,
       functionTileName: 'Cleaning',
@@ -70,7 +69,7 @@ class FunctionTileModel {
       imagePath1: 'assets/icons/cleaning.png',
       imagePath2: 'assets/icons/cleaning.png',
       tileBgColor: TT.primaryBlack,
-      routeScreen: const ExhaustControl(),
+      routeScreen: const CageClean(),
     ),
   ];
 }

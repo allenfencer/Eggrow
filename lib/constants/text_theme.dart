@@ -7,6 +7,9 @@ class TT {
   static const primaryyellow = Color(0xffFFD75E);
   static const primaryGreen = Color(0xffE7FBBE);
 
+  static const f14wnormal = TextStyle(
+      fontSize: 14, color: primaryBlack, fontWeight: FontWeight.normal);
+
   static const f18wnormal = TextStyle(
       fontSize: 18, color: primaryBlack, fontWeight: FontWeight.normal);
 

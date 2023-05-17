@@ -5,6 +5,7 @@ import 'package:eggrow_app/models/function_tile_model.dart';
 import 'package:eggrow_app/providers/light_function_providers.dart';
 import 'package:eggrow_app/services/authentication_service.dart';
 import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
+import 'package:eggrow_app/views/cage%20functions/cage_clean.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/dashboard_shimmer.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
@@ -37,7 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
     const LightControl(),
     const CageControl(),
     const FanControl(),
-    const ExhaustControl(),
+   
+    const CageClean(),
   ];
 
   @override
@@ -49,8 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
@@ -153,6 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ]),
         ),
       ),
-    ));
+    );
   }
 }

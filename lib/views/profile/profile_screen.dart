@@ -32,45 +32,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text(
-            'Profile',
-            style: TT.f24w500,
-          ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          'Profile',
+          style: TT.f24w500,
         ),
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(horizontal: 22),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // const SizedBox(
-              //   height: 50,
-              // ),
-              CircleAvatar(
-                backgroundColor: Colors.grey.shade300,
-                radius: 60,
-                child: const Icon(
-                  Icons.person,
-                  size: 50,
-                  color: TT.primaryBlack,
-                ),
+      ),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(horizontal: 22),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // const SizedBox(
+            //   height: 50,
+            // ),
+            CircleAvatar(
+              backgroundColor: Colors.grey.shade300,
+              radius: 60,
+              child: const Icon(
+                Icons.person,
+                size: 50,
+                color: TT.primaryBlack,
               ),
-              const SizedBox(
-                height: 150,
-              ),
-              CustomButton(
-                isLoading: isLoading,
-                function: logoutUser,
-                buttonText: 'Logout',
-                buttonColor: Color.fromARGB(255, 212, 53, 53),
-              )
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 150,
+            ),
+            CustomButton(
+              isLoading: isLoading,
+              function: logoutUser,
+              buttonText: 'Logout',
+              buttonColor: Color.fromARGB(255, 212, 53, 53),
+            )
+          ],
         ),
       ),
     );

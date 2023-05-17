@@ -13,7 +13,7 @@ class FeedControl extends StatefulWidget {
 }
 
 class _FeedControlState extends State<FeedControl> {
-  bool fanOn = false;
+  
   @override
   Widget build(BuildContext context) {
     return Container(

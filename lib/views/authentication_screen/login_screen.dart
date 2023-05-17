@@ -39,13 +39,27 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey.shade100,
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 80,
+            ),
+            Center(
+              child: Image.asset(
+                'assets/app_logo/logo.png',
+                height: 60,
+                width: 60,
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
             const Text(
               'Sign in',
               style: TT.f35w500,
@@ -76,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             TextField(
               controller: passwordController,
+              obscureText: true,
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
                   filled: true,

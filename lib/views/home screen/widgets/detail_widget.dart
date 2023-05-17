@@ -35,7 +35,7 @@ class DetailWidget extends StatelessWidget {
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: null,
                   icon: const Icon(
-                    Icons.device_thermostat,
+                    Icons.device_thermostat_outlined,
                     color: Colors.black87,
                   ),
                   label: const Text(
@@ -75,7 +75,7 @@ class DetailWidget extends StatelessWidget {
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: null,
                   icon: const Icon(
-                    Icons.device_thermostat,
+                    Icons.gas_meter_outlined,
                     color: Colors.black87,
                   ),
                   label: const Text(
