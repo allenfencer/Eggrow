@@ -39,42 +39,18 @@ class _CageCleanState extends State<CageClean> {
                   icon: const Icon(Icons.arrow_back_ios)),
               Text(
                 'Cage Clean',
-                style: TT.f18w600.copyWith(color: TT.primaryBlack),
+                style: TT.f18w500.copyWith(color: TT.primaryBlack),
               )
             ],
           ),
           const SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: Container(
-              height: 180,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: TT.primaryGreen,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.shade200,
-                        offset: const Offset(1, 1),
-                        spreadRadius: 1,
-                        blurRadius: 5)
-                  ]),
-              child: const Text(
-                '40',
-                style: TT.f35w500,
-              ),
-            ),
-          ),
-          //SCHEDULE
-          const SizedBox(
-            height: 25,
+            height: 40,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Quick Action',
-              style: TT.f16w700,
+              style: TT.f18wnormal,
             ),
           ),
           const SizedBox(

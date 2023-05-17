@@ -36,6 +36,7 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.2.19
   flutter_vibrate: ^1.3.0
+  percent_indicator: ^4.2.3
   provider: ^6.0.5
   shimmer: ^2.0.0
 
@@ -72,7 +73,6 @@ flutter:
       fonts:
         - asset: assets\fonts\Product Sans Bold.ttf
         - asset: assets\fonts\Product Sans Regular.ttf
-      
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
@@ -81,13 +81,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  
 #launcher icons
 flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/app_logo/logo.png"
-#splash screen 
+#splash screen
 flutter_native_splash:
   color: "#FFFFFF"
   image: assets/app_logo/logo.png

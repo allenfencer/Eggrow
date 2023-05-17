@@ -17,12 +17,14 @@ class LightControl extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(
+        image: DecorationImage(
             fit: BoxFit.none,
             scale: 1.6,
             alignment: Alignment.topRight,
             image: AssetImage(
-              'assets/icons/lightImage.png',
+              context.watch<LightFunctionProvider>().lightSwitch
+                  ? 'assets/icons/lightbulbOn.png'
+                  : 'assets/icons/lightImage.png',
             )),
         color: Colors.white,
       ),

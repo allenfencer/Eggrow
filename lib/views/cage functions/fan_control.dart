@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
-import '../../global widgets/minimalist_tile.dart';
 
 class FanControl extends StatefulWidget {
   const FanControl({super.key});
@@ -21,7 +20,7 @@ class _FanControlState extends State<FanControl> {
         borderRadius: BorderRadius.circular(20),
         color: Colors.white,
       ),
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 130),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 170),
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,39 +44,39 @@ class _FanControlState extends State<FanControl> {
           const SizedBox(
             height: 20,
           ),
-          Center(
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              height: 180,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: TT.primaryGreen,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.shade200,
-                        offset: const Offset(1, 1),
-                        spreadRadius: 1,
-                        blurRadius: 5)
-                  ]),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    '40°C',
-                    style: TT.f35w500,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'Current Temperature',
-                    style: TT.f16w700,
-                  )
-                ],
-              ),
-            ),
-          ),
+          // Center(
+          //   child: Container(
+          //     padding: const EdgeInsets.all(20),
+          //     height: 180,
+          //     alignment: Alignment.center,
+          //     decoration: BoxDecoration(
+          //         shape: BoxShape.circle,
+          //         color: TT.primaryGreen,
+          //         boxShadow: [
+          //           BoxShadow(
+          //               color: Colors.grey.shade200,
+          //               offset: const Offset(1, 1),
+          //               spreadRadius: 1,
+          //               blurRadius: 5)
+          //         ]),
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: const [
+          //         Text(
+          //           '40°C',
+          //           style: TT.f35w500,
+          //         ),
+          //         SizedBox(
+          //           height: 5,
+          //         ),
+          //         Text(
+          //           'Current Temperature',
+          //           style: TT.f16w700,
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
           //SCHEDULE
           const SizedBox(
             height: 25,
@@ -86,7 +85,7 @@ class _FanControlState extends State<FanControl> {
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Quick Action',
-              style: TT.f16w700,
+              style: TT.f18wnormal,
             ),
           ),
           const SizedBox(

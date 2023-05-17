@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../constants/text_theme.dart';
 import '../views/cage functions/cage_clean.dart';
-import '../views/cage functions/exhaust_control.dart';
 
 class FunctionTileModel {
   // bool isActive;

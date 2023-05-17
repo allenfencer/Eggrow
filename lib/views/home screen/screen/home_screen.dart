@@ -1,25 +1,15 @@
-import 'dart:developer';
-
-import 'package:eggrow_app/global%20widgets/custom_button.dart';
 import 'package:eggrow_app/models/function_tile_model.dart';
-import 'package:eggrow_app/providers/light_function_providers.dart';
-import 'package:eggrow_app/services/authentication_service.dart';
-import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
 import 'package:eggrow_app/views/cage%20functions/cage_clean.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/dashboard_shimmer.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
+import 'package:eggrow_app/views/home%20screen/widgets/feed_widget.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
 import 'package:eggrow_app/views/home%20screen/widgets/gridview_shimmer.dart';
 import 'package:eggrow_app/views/profile/profile_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
-import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
-
 import '../../../constants/text_theme.dart';
 import '../../cage functions/cage_control.dart';
-import '../../cage functions/exhaust_control.dart';
 import '../../cage functions/fan_control.dart';
 import '../../cage functions/light_control.dart';
 
@@ -33,18 +23,19 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = false;
   late DatabaseReference dashboardRef;
+  late DatabaseReference feedRef;
   late DatabaseReference cageRef;
   List<Widget> cageFunctions = [
     const LightControl(),
     const CageControl(),
-    const FanControl(),
-   
+    FanControl(),
     const CageClean(),
   ];
 
   @override
   void initState() {
     dashboardRef = FirebaseDatabase.instance.ref('Dashboard');
+    feedRef = FirebaseDatabase.instance.ref('Feed');
     cageRef = FirebaseDatabase.instance.ref('cage-functions');
     super.initState();
   }
@@ -110,6 +101,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       temperature: temp,
                       humitdity: humidity,
                       gas: gas,
+                    );
+                  } else {
+                    return const DashboardShimmer();
+                  }
+                }),
+            const SizedBox(height: 35),
+            StreamBuilder(
+                stream: feedRef.onValue,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const DashboardShimmer();
+                  } else if (snapshot.hasData) {
+                    var foodVal =
+                        snapshot.data!.snapshot.child('food').value.toString();
+                    var waterVal =
+                        snapshot.data!.snapshot.child('water').value.toString();
+                    var eggCountVal =
+                        snapshot.data!.snapshot.child('eggCount').value;
+                    return FeedWidget(
+                      foodLevel: foodVal,
+                      waterLevel: waterVal,
+                      eggCount: eggCountVal as int,
                     );
                   } else {
                     return const DashboardShimmer();
