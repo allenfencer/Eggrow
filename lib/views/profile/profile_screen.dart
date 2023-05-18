@@ -1,7 +1,8 @@
-import 'package:eggrow_app/constants/text_theme.dart';
-import 'package:eggrow_app/global%20widgets/custom_button.dart';
+
 import 'package:flutter/material.dart';
 
+import '../../constants/text_theme.dart';
+import '../../global widgets/custom_button.dart';
 import '../../services/authentication_service.dart';
 import '../authentication_screen/login_screen.dart';
 

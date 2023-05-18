@@ -1,9 +1,9 @@
-import 'package:eggrow_app/providers/exhaust_function_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
 import '../../global widgets/minimalist_tile.dart';
+import '../../providers/exhaust_function_provider.dart';
 
 class FeedControl extends StatefulWidget {
   const FeedControl({super.key});

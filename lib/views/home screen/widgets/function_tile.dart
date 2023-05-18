@@ -1,8 +1,8 @@
-import 'package:eggrow_app/models/function_tile_model.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import '../../../constants/text_theme.dart';
+import '../../../models/function_tile_model.dart';
 
 class FunctionTile extends StatefulWidget {
   bool? isActive;

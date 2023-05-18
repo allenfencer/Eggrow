@@ -1,14 +1,21 @@
-import 'package:eggrow_app/constants/text_theme.dart';
-import 'package:eggrow_app/providers/clean_function_provider.dart';
-import 'package:eggrow_app/providers/door_function_provider.dart';
-import 'package:eggrow_app/providers/exhaust_function_provider.dart';
-import 'package:eggrow_app/providers/fan_function_provider.dart';
-import 'package:eggrow_app/providers/light_function_providers.dart';
-import 'package:eggrow_app/views/authentication_screen/login_screen.dart';
+import 'package:Eggrow/providers/clean_function_provider.dart';
+import 'package:Eggrow/providers/door_function_provider.dart';
+import 'package:Eggrow/providers/exhaust_function_provider.dart';
+import 'package:Eggrow/providers/fan_function_provider.dart';
+import 'package:Eggrow/providers/light_function_providers.dart';
+import 'package:Eggrow/views/authentication_screen/login_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'constants/text_theme.dart';
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

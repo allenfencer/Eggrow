@@ -1,10 +1,10 @@
-import 'package:eggrow_app/views/cage%20functions/cage_control.dart';
-import 'package:eggrow_app/views/cage%20functions/fan_control.dart';
-import 'package:eggrow_app/views/cage%20functions/light_control.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import '../constants/text_theme.dart';
 import '../views/cage functions/cage_clean.dart';
+import '../views/cage functions/cage_control.dart';
+import '../views/cage functions/fan_control.dart';
+import '../views/cage functions/light_control.dart';
 
 class FunctionTileModel {
   // bool isActive;

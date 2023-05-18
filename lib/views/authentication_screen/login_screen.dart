@@ -1,10 +1,10 @@
-import 'package:eggrow_app/global%20widgets/custom_button.dart';
-import 'package:eggrow_app/services/authentication_service.dart';
-import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/text_theme.dart';
+import '../../global widgets/custom_button.dart';
+import '../../services/authentication_service.dart';
+import '../home screen/screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

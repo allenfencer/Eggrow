@@ -1,11 +1,9 @@
-import 'package:eggrow_app/providers/light_function_providers.dart';
-import 'package:eggrow_app/views/home%20screen/screen/home_screen.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
 import '../../models/function_tile_model.dart';
+import '../../providers/light_function_providers.dart';
 
 class LightControl extends StatelessWidget {
   const LightControl({
@@ -125,7 +123,7 @@ class LightControl extends StatelessWidget {
                       blurStyle: BlurStyle.outer,
                       blurRadius: 12)
                 ]),
-            child: Text('SCHEDULE'),
+            child: const Text('SCHEDULE'),
           )
         ],
       ),

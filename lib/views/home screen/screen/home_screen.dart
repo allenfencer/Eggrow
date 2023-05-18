@@ -1,17 +1,20 @@
-import 'package:eggrow_app/models/function_tile_model.dart';
-import 'package:eggrow_app/views/cage%20functions/cage_clean.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/dashboard_shimmer.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/detail_widget.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/feed_widget.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/function_tile.dart';
-import 'package:eggrow_app/views/home%20screen/widgets/gridview_shimmer.dart';
-import 'package:eggrow_app/views/profile/profile_screen.dart';
+import 'dart:developer';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/text_theme.dart';
+import '../../../models/function_tile_model.dart';
+import '../../../services/notification_service.dart';
+import '../../cage functions/cage_clean.dart';
 import '../../cage functions/cage_control.dart';
 import '../../cage functions/fan_control.dart';
 import '../../cage functions/light_control.dart';
+import '../../profile/profile_screen.dart';
+import '../widgets/dashboard_shimmer.dart';
+import '../widgets/detail_widget.dart';
+import '../widgets/feed_widget.dart';
+import '../widgets/function_tile.dart';
+import '../widgets/gridview_shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,6 +24,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  NotificationService notificationService = NotificationService();
   bool isLoading = false;
   late DatabaseReference dashboardRef;
   late DatabaseReference feedRef;
@@ -28,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> cageFunctions = [
     const LightControl(),
     const CageControl(),
-    FanControl(),
+    const FanControl(),
     const CageClean(),
   ];
 
@@ -37,6 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
     dashboardRef = FirebaseDatabase.instance.ref('Dashboard');
     feedRef = FirebaseDatabase.instance.ref('Feed');
     cageRef = FirebaseDatabase.instance.ref('cage-functions');
+    notificationService.requestNotificationPermission();
+    notificationService.firebaseInit(context);
+    notificationService.getDeviceToken().then((value) {
+      log(value.toString());
+    });
     super.initState();
   }
 

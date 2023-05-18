@@ -1,8 +1,8 @@
-import 'package:eggrow_app/providers/fan_function_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants/text_theme.dart';
+import '../../providers/fan_function_provider.dart';
 
 class FanControl extends StatefulWidget {
   const FanControl({super.key});
